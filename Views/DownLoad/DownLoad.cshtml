@@ -1,0 +1,32 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DownLoad</title>
+    <h1>Напишите Имя: </h1>
+    <style>
+        #path{
+            padding: 10px;
+            width:30%;
+        }
+         #download {
+         padding: 10px;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
+        background: #669acc;
+        color: #fff;
+    }
+    </style>
+    <form method="post" asp-action="Get" asp-controller="Download">
+        <label for="keyEF">Имя:</label>
+        <input type="text" name="name" id="path" required placeholder="Формат ввода : Filename.docx" x-autocompletetype="Key" class="w100 border">
+        <input value="Скачать" type="submit" id="download">
+    </form>
+    
+</head>
+<body>
+</body>
+</html>

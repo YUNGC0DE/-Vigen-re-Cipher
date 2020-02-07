@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Encrypt";
+}
+<h1>Зашифровать</h1>
+
+<!DOCTYPE HTML>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Контактная форма</title>
+<style>
+    textarea {
+        width: 100%;
+        border-radius: 2px;
+        height: 150px;
+    }
+
+    #encrypt-form {
+        max-width: 100%;
+        padding: 2%;
+        border-radius: 3px;
+        background: #f1f1f1;
+    }
+
+        #encrypt-form label {
+            float: left;
+            display: block;
+            clear: right;
+        }
+
+        #encrypt-form .w100 {
+            float: right;
+            max-width: 80%;
+            width: 97%;
+            margin-bottom: 1em;
+            padding: 1.5%;
+        }
+
+        #encrypt-form .border {
+            border-radius: 1px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+            box-shadow: 0 1px 1px rgba(255,255,255,.5), 0 1px 1px rgba(0,0,0,.1) inset;
+        }
+
+            #encrypt-form .border:focus {
+                outline: none;
+                border-color: #abd9f1 #bfe3f7 #bfe3f7;
+            }
+
+            #encrypt-form .border:hover {
+                border-color: #7eb4ea #97cdea #97cdea;
+            }
+
+            #encrypt-form .border:focus::-moz-placeholder {
+                color: transparent;
+            }
+
+            #encrypt-form .border:focus::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+            #encrypt-form .border:not(:focus):not(:hover):valid {
+                opacity: .8;
+            }
+
+    #submitEF {
+        padding: 2%;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
+        background: #669acc;
+        color: #fff;
+    }
+     #download {
+        border:none;
+        border-radius: 3px;
+        box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
+        background: #669acc;
+        color: #fff;
+        width: 100%;
+        height:43px;
+    }
+
+    #encrypt-form br {
+        height: 0;
+        clear: both;
+    }
+
+    #submitEF:hover {
+        background: #5c90c2;
+    }
+
+    #submitEF:focus {
+        box-shadow: 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+    }
+</style>
+
+<form enctype="multipart/form-data" method="post" id="encrypt-form" asp-action="Encrypt" asp-controller="Encrypt">
+    <label for="keyEF">Ключ:</label>
+    <input type="text" name="keyEF" id="keyEF" required placeholder="Например, Скорпион" x-autocompletetype="Key" class="w100 border">
+    <label for="fileEF">Прикрепить файл:</label>
+    <input type="file" name="fileEF" multiple id="fileEF" class="w100">
+    <label for="textEF">Текст:</label>
+<textarea name="textEF" id="textEF" required rows="5" placeholder="Текст для зашифровки" class="w100 border"> </textarea>
+    <br>
+    <input value="Зашифровать" type="submit" id="submitEF">
+</form>
+@{
+    if (EncrypteModel.Text != "")
+    {
+        <form method="post" asp-action="Download" asp-controller="Download">
+            <input type="hidden" name="Encrypte" />
+            <input value="Скачать" type="submit" id="download">
+        </form>
+    }
+}
+<form>
+    <textarea name="enc_text">@EncrypteModel.Text</textarea>
+</form>
+
